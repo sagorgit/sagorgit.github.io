@@ -2,6 +2,17 @@ site_name: Портфолио - Сагор
 theme:
   name: material
   language: ru
+  palette:
+    - scheme: default
+      primary: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Темная тема
+    - scheme: slate
+      primary: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Светлая тема
   # Добавил простое расширение для красивых блоков с текстом
   markdown_extensions:
     - admonition
@@ -14,4 +25,6 @@ nav:
       - Лабораторная рабоcdта 2: labs/lab2.md
       - Лабораторная работа 3: labs/lab3.md
       - Template: template.md
-
+# Добавил простое расширение для красивых блоков с текстом
+markdown_extensions:
+  - admonition
