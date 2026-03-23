@@ -25,6 +25,8 @@ nav:
       - Лабораторная рабоcdта 2: labs/lab2.md
       - Лабораторная работа 3: labs/lab3.md
       - Template: template.md
-# Добавил простое расширение для красивых блоков с текстом
+# Подключение расширения для использования эмодзи и иконок
 markdown_extensions:
-  - admonition
+  - pymdownx.emoji:
+      emoji_index: !!python/name:pymdownx.emoji.twemoji
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg

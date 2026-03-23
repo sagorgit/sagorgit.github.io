@@ -15,3 +15,5 @@
 `bash
 mkdocs build -d ../docs
 ### 4. Выводы
+Отчет успешно завершен и проверен! :rocket: :smile: :white_check_mark:
+
