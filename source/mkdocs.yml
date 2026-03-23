@@ -2,6 +2,9 @@ site_name: Портфолио - Сагор
 theme:
   name: material
   language: ru
+  # Добавил простое расширение для красивых блоков с текстом
+  markdown_extensions:
+    - admonition
 
 nav:
   - Главная: index.md
@@ -11,3 +14,4 @@ nav:
       - Лабораторная рабоcdта 2: labs/lab2.md
       - Лабораторная работа 3: labs/lab3.md
       - Template: template.md
+
