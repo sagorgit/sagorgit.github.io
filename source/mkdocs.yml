@@ -1,0 +1,12 @@
+site_name: Портфолио - Сагор
+theme:
+  name: material
+  language: ru
+
+nav:
+  - Главная: index.md
+  - Об авторе: about.md
+  - Лабораторные работы:
+      - Лабораторная работа 1: labs/lab1.md
+      - Лабораторная работа 2: labs/lab2.md
+      - Лабораторная работа 3: labs/lab3.md
