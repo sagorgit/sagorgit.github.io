@@ -1,2 +1,6 @@
-site:
-  root: "public"
+sites:
+  - name: lab3-site
+    root: /         # Internal route of the artifact
+# Here the format 'workflow-name.task-name' should be used
+    task: build-workflow.build-task 
+    artifact: public
