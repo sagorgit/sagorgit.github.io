@@ -1,11 +1,11 @@
 on:
   push:
-    - workflows: [build-workflow]
+    - workflows: [build-site]
       filter:
-        branches: ["main"]
+        branches: ["main", "master"]
 
 workflows:
-  build-workflow:
+  build-site:
     tasks:
       - name: build-task
         cubes:
@@ -15,7 +15,7 @@ workflows:
             action: actions/setup-python@v5
             with:
               python-version: '3.x'
-          - name: build-docs
+          - name: build-mkdocs
             script:
               - pip install mkdocs-material mkdocs
               - cd source
