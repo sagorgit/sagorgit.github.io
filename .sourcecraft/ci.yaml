@@ -1,25 +1,14 @@
 on:
   push:
-    - workflows: [build-workflow]
+    - workflows: [build-check]
       filter:
         branches: ["main"]
 
 workflows:
-  build-workflow:
+  build-check:
     tasks:
-      - name: build-task
-        artifacts:
-          - name: site-output
-            path: public
+      - name: check
         cubes:
-          - name: checkout
-            action: actions/checkout@v4
-          - name: setup-python
-            action: actions/setup-python@v5
-            with:
-              python-version: '3.x'
-          - name: build-docs
-            script:
-              - pip install mkdocs-material mkdocs
-              - cd source
-              - mkdocs build --site-dir ../public
+          - action: actions/checkout@v4
+          - script:
+              - echo "Site files are already in the public folder."

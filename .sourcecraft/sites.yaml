@@ -1,5 +1,2 @@
-sites:
-  - name: lab3-site
-    task: build-workflow.build-task
-    artifact: site-output
-    root: /
+site:
+  root: "public"
