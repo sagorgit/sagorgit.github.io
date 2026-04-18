@@ -8,6 +8,10 @@ workflows:
   build-workflow:
     tasks:
       - name: build-task
+        # artifacts অবশ্যই cubes এর আগে বা সমান্তরালে থাকতে হবে
+        artifacts:
+          - name: public-site
+            path: public
         cubes:
           - name: checkout
             action: actions/checkout@v4
@@ -20,6 +24,3 @@ workflows:
               - pip install mkdocs-material mkdocs
               - cd source
               - mkdocs build --site-dir ../public
-        artifacts:
-          - name: public-files
-            path: public

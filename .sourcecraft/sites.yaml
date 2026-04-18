@@ -2,4 +2,4 @@ sites:
   - name: lab3-site
     root: /
     task: build-workflow.build-task
-    artifact: public-files
+    artifact: public-site
