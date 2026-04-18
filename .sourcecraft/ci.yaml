@@ -7,7 +7,7 @@ on:
 workflows:
   build-and-deploy:
     tasks:
-      - name: build-task
+      - name: build-and-deploy-task
         cubes:
           - name: checkout-code
             action: actions/checkout@v4
@@ -23,12 +23,8 @@ workflows:
               - cd source
               - mkdocs build --site-dir ../public
 
-          # এই স্টেপটি আপনার সাইটকে SourceCraft Pages-এ পাঠিয়ে দিবে
+          # GitHub-এর অ্যাকশনের বদলে SourceCraft-এর নিজস্ব অ্যাকশন ব্যবহার করছি
           - name: deploy-to-pages
-            action: actions/upload-pages-artifact@v3
+            action: sourcecraft/pages-deploy-action@v1
             with:
-              path: public
-          
-          # SourceCraft-এর নিজস্ব ডিপ্লয়মেন্ট অ্যাকশন
-          - name: finish-deployment
-            action: actions/deploy-pages@v4
+              folder: public
