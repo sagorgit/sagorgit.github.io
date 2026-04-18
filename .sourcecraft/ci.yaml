@@ -11,21 +11,12 @@ workflows:
         cubes:
           - name: checkout
             action: actions/checkout@v4
-
           - name: setup-python
             action: actions/setup-python@v5
             with:
               python-version: '3.x'
-
           - name: build-docs
             script:
               - pip install mkdocs-material mkdocs
               - cd source
               - mkdocs build --site-dir ../public
-
-          # artifacts এর বদলে এই 'action' ব্যবহার করুন
-          - name: upload-site
-            action: actions/upload-artifact@v4
-            with:
-              name: public-site
-              path: public
