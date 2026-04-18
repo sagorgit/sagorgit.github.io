@@ -1,0 +1,34 @@
+on:
+  push:
+    - workflows: [build-and-deploy]
+      filter:
+        branches: ["main"]
+
+workflows:
+  build-and-deploy:
+    tasks:
+      - name: build-task
+        cubes:
+          - name: checkout-code
+            action: actions/checkout@v4
+
+          - name: setup-python
+            action: actions/setup-python@v5
+            with:
+              python-version: '3.x'
+
+          - name: build-mkdocs
+            script:
+              - pip install mkdocs-material mkdocs
+              - cd source
+              - mkdocs build --site-dir ../public
+
+          # এই স্টেপটি আপনার সাইটকে SourceCraft Pages-এ পাঠিয়ে দিবে
+          - name: deploy-to-pages
+            action: actions/upload-pages-artifact@v3
+            with:
+              path: public
+          
+          # SourceCraft-এর নিজস্ব ডিপ্লয়মেন্ট অ্যাকশন
+          - name: finish-deployment
+            action: actions/deploy-pages@v4
