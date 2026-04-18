@@ -1,4 +1,4 @@
-name: Deploy MkDocs to SourceCraft Pages
+name: Deploy Static Site
 on:
   push:
     branches:
@@ -10,23 +10,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.x'
 
       - name: Install dependencies
-        run: |
-          pip install mkdocs mkdocs-material
+        run: pip install mkdocs-material mkdocs
 
-      - name: Build site
-        run: |
-          cd source
-          mkdocs build
+      - name: Build MkDocs site
+        # source ফোল্ডারে ঢুকে বিল্ড করে রেজাল্ট 'public' ফোল্ডারে সেভ করবে
+        run: cd source && mkdocs build --site-dir ../public
 
       - name: Deploy to SourceCraft Pages
         uses: sourcecraft/pages-deploy-action@v1
         with:
-          folder: source/site  # এখানে 'source/site' কারণ বিল্ড করার পর সাইটটি এখানে জমা হবে
+          folder: public
