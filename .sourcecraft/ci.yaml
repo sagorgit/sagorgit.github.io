@@ -20,7 +20,6 @@ workflows:
               - pip install mkdocs-material mkdocs
               - cd source
               - mkdocs build --site-dir ../public
-        # এটি খুব গুরুত্বপূর্ণ: বিল্ড হওয়া ফাইলগুলোকে 'public' নামে সেভ রাখা
         artifacts:
-          - name: public
+          - name: public-files
             path: public
