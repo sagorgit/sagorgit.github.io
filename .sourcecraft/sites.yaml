@@ -1,2 +1,3 @@
 site:
-  root: "public"
+  root: "source/site"
+  ref: "main"

@@ -2,7 +2,7 @@ on:
   push:
     - workflows: [build-check]
       filter:
-        branches: ["main"]
+        branches: ["main", "master"]
 
 workflows:
   build-check:
@@ -11,4 +11,4 @@ workflows:
         cubes:
           - action: actions/checkout@v4
           - script:
-              - echo "Site files are already in the public folder."
+              - echo "Site files are already manually built and added in the source/site folder."
