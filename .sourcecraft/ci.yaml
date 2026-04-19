@@ -9,6 +9,11 @@ workflows:
     tasks:
       - name: check
         cubes:
-          - action: actions/checkout@v4
-          - script:
+          # এখানে name যোগ করা হয়েছে
+          - name: checkout-code
+            action: actions/checkout@v4
+            
+          # এখানেও name যোগ করা হয়েছে
+          - name: print-message
+            script:
               - echo "Site files are already manually built and added in the source/site folder."
