@@ -46,9 +46,11 @@ git push sourcecraft main
 
 ## 4. Выводы
 В результате выполнения лабораторной работы был настроен процесс CI/CD, который позволяет автоматически обновлять статический сайт на двух разных хостингах одновременно.
-Результаты выполнения:
-SourceCraft Static Site: https://afsaruddinsagor12.sourcecraft.site/lab3-site/
-SourceCraft Repository: https://sourcecraft.dev/afsaruddinsagor12/lab3-site
-GitHub Pages Site: https://afsaruddinsagor12.github.io/portfolio/
-GitHub Repository: https://github.com/afsaruddinsagor12/portfolio
+**SourceCraft:**
+*[SourceCraft static site](https://afsaruddinsagor12.sourcecraft.site/lab3-site/)
+*[SourceCraft repository](https://sourcecraft.dev/afsaruddinsagor12/lab3-site)
+
+**GitHub:**
+* [GitHub static site(GitHub Pages)](https://sagorgit.github.io/)
+* [GitHub repository](https://github.com/sagorgit/sagorgit.github.io)
 
