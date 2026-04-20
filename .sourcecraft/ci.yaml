@@ -1,6 +1,6 @@
 on:
   push:
-    - workflows:[build-site]
+    - workflows: [build-site]
       filter:
         branches: ["main"]
 
@@ -9,17 +9,17 @@ workflows:
     tasks:
       - name: build-and-publish-site
         cubes:
-          # ১. গিট থেকে লেটেস্ট কোড নিয়ে আসা
+          
           - name: checkout-code
             action: actions/checkout@v4
 
-          # ২. পাইথন সেটআপ করা
+          
           - name: setup-python
             action: actions/setup-python@v5
             with:
               python-version: '3.x'
 
-          # ৩. টিচারের দেওয়া বিল্ড কমান্ড (আপনার source ফোল্ডারের জন্য মডিফাই করা)
+          
           - name: build-mkdocs-site
             script:
               - python -m pip install --upgrade pip
@@ -28,7 +28,7 @@ workflows:
               - echo "Сайт собран в папке ./site"
               - ls -la ./site
           
-          # ৪. টিচারের দেওয়া রিলিজ ব্রাঞ্চে পুশ করার কমান্ড
+          
           - name: publish-to-release-branch
             script:
               - git config --global user.name "SourceCraft CI"
