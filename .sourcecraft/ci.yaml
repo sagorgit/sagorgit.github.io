@@ -1,19 +1,39 @@
 on:
   push:
-    - workflows: [build-check]
+    - workflows:[build-site]
       filter:
-        branches: ["main", "master"]
+        branches: ["main"]
 
 workflows:
-  build-check:
+  build-site:
     tasks:
-      - name: check
+      - name: build-and-publish-site
         cubes:
-          # এখানে name যোগ করা হয়েছে
+          # ১. গিট থেকে লেটেস্ট কোড নিয়ে আসা
           - name: checkout-code
             action: actions/checkout@v4
-            
-          # এখানেও name যোগ করা হয়েছে
-          - name: print-message
+
+          # ২. পাইথন সেটআপ করা
+          - name: setup-python
+            action: actions/setup-python@v5
+            with:
+              python-version: '3.x'
+
+          # ৩. টিচারের দেওয়া বিল্ড কমান্ড (আপনার source ফোল্ডারের জন্য মডিফাই করা)
+          - name: build-mkdocs-site
             script:
-              - echo "Site files are already manually built and added in the source/site folder."
+              - python -m pip install --upgrade pip
+              - pip install mkdocs-material mkdocs
+              - cd source && mkdocs build -d ../site
+              - echo "Сайт собран в папке ./site"
+              - ls -la ./site
+          
+          # ৪. টিচারের দেওয়া রিলিজ ব্রাঞ্চে পুশ করার কমান্ড
+          - name: publish-to-release-branch
+            script:
+              - git config --global user.name "SourceCraft CI"
+              - git config --global user.email "ci@sourcecraft.dev"
+              - git checkout -b release
+              - git add ./site --force
+              - git commit -m "feat: автоматическое обновление сайта"
+              - git push origin release -f
