@@ -24,7 +24,7 @@ workflows:
             script:
               - python -m pip install --upgrade pip
               - pip install mkdocs-material mkdocs
-              - cd source && mkdocs build -d ../site
+              - cd source && mkdocs build -d ../site && cd ..
               - echo "Сайт собран в папке ./site"
               - ls -la ./site
           
